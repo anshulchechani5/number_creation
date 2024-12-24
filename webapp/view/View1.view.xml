@@ -1,0 +1,167 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:smarttable="sap.ui.comp.smarttable" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:table="sap.ui.table" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" controllerName="ysetnumbercreation.controller.View1" displayBlock="true" width="100%">
+    <Page id="page" title="{i18n>title}">
+          <content>
+            <Panel id="a1" expandable="true" expanded="true" headerText="Item">
+                <f:SimpleForm id="a2" layout="ResponsiveGridLayout" columnsL="3" columnsXL="3" columnsM="2" editable="true">
+                    <f:content>
+                        <core:Title id="a3" text="Entry Set Number "/>
+                        <Label id="a4" required="true" text="Plant"/>
+                        <ComboBox items="{/PlantData}" showSecondaryValues="true" id="plant">
+                            <items>
+                                <core:ListItem id="a5" text="{Plant}" key="{Plant}" additionalText="{PlantName}"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="a6" required="true" text="Dyeing M/C Number"/>
+                        <!-- <Input id="mno" placeholder="Enter Warping Machine Number "  submit="finalsetno" /> -->
+                        <ComboBox change="finalsetno" id="mno">
+                            <items>
+                                <core:ListItem id="a7" text="1" key="1"/>
+                                <core:ListItem id="a8" text="2" key="2"/>
+                                <core:ListItem id="a9" text="3" key="3"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="a10" required="true" text="Dyeing Sort"/>
+                        <Input id="dyeisort" placeholder="Enter Dyeing Sort " valueHelpRequest="dyeingsort" showValueHelp="true"/>
+                        <Label id="a11" required="true" text="Dyeing desc"/>
+                        <Input id="dyeidesc" editable="false"/>
+                        <core:Title id="a12"/>
+                        <Label id="a13" required="true" text="Date"/>
+                        <DatePicker id="date" valueFormat="yyyy-MM-dd" displayFormat="yyyy-MM-dd" value="{oDateModel>/dDefaultDate}" editable="true"/>
+                        <Label id="a14" required="true" text="Set Number"/>
+                        <Input id="sno" editable="false"/>
+                        <Label id="a15" required="true" text="Set Length "/>
+                        <Input id="sln" placeholder="Enter Set Length Number"/>
+                        <core:Title id="a16"/>
+                        <Label id="a17" required="true" text="Final Set No."/>
+                        <Input id="fsn" editable="false"/>
+
+                    </f:content>
+                </f:SimpleForm>
+                <Bar id="bar">
+                    <contentRight>
+                        <Button id="bt1" icon="sap-icon://save" text="Save" type="Emphasized" press="SAVEDATA" activeIcon="sap-icon://save"/>
+                    </contentRight>
+                </Bar>
+            </Panel>
+            <Panel id="p1" expandable="true" expanded="true" headerText="Done Entry Details">
+               
+                <!-- <smartTable:SmartTable id="tab" entitySet="ZDNM_ALIAS" enableAutoColumnWidth="true" tableType="Table" showFullScreenButton="true" enableExport="true" 
+                initiallyVisibleFields="Werks,ZmcNo,ZsetNo,ZfsetNo,ZsetStd,Zlength,material,mat_des" useVariantManagement="true" useTablePersonalisation="true" header="TOTAL ROW" showRowCount="true" editable="false" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" editTogglable="false" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" cd:w5g.dt.context="/ZDNM_ALIAS">
+						<smartTable:layoutData>
+							<FlexItemData growFactor="1" baseSize="0%"/> 
+						</smartTable:layoutData>
+                        
+                     
+				</smartTable:SmartTable> -->
+
+
+                <smartTable:SmartTable  id="IdSmartTable" smartFilterId="idSmartFilterBar" entitySet="ZDNM_ALIAS" enableAutoBinding="true" tableType="Table" initiallyVisibleFields="Werks,ZmcNo,ZsetNo,ZfsetNo,ZsetStd,Zlength,material,mat_des">
+                        <Table id="t2" fixedLayout="false" >
+                            <columns>
+                                <Column id="t3">
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "Werks", "leadingProperty": "Werks", "sortProperty": "Werks", "filterProperty": "Werks", "columnIndex": 1}'/>
+                                    </customData>
+                                    <Text id="t4" text="Plant"></Text>
+                                </Column>
+                                <Column id="t5">
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "ZmcNo", "leadingProperty": "ZmcNo", "sortProperty": "ZmcNo", "filterProperty": "ZmcNo", "columnIndex": 2}'/>
+                                    
+                                    </customData>
+                                    <Text id="t6" text="ZmcNo"></Text>
+                                </Column>
+                                <Column id="t7">
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "ZsetNo", "leadingProperty": "ZsetNo", "sortProperty": "ZsetNo", "filterProperty": "ZsetNo", "columnIndex": 3}'/>
+                                    </customData>
+                                    <Text id="t8" text="ZsetNo"></Text>
+                                </Column>
+                                <Column id="t9">
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "ZfsetNo", "leadingProperty": "ZfsetNo", "sortProperty": "ZfsetNo", "filterProperty": "ZfsetNo", "columnIndex": 4}'/>
+                                    </customData>
+                                    <Text text="ZfsetNo"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "ZsetStd", "leadingProperty": "ZsetStd", "sortProperty": "ZsetStd", "filterProperty": "ZsetStd", "columnIndex": 5}'/>
+                                    </customData>
+                                    <Text text="ZsetStd"></Text>
+                                </Column>
+
+
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "UnitField", "leadingProperty": "UnitField", "sortProperty": "UnitField", "filterProperty": "UnitField", "columnIndex":6 }'/>
+                                    </customData>
+                                    <Text text="UnitField"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "UnitField1", "leadingProperty": "UnitField1", "sortProperty": "UnitField1", "filterProperty": "UnitField1", "columnIndex":7 }'/>
+                                    </customData>
+                                    <Text text="UnitField1"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "Zlength", "leadingProperty": "Zlength", "sortProperty": "Zlength", "filterProperty": "Zlength", "columnIndex":8 }'/>
+                                    </customData>
+                                    <Text text="Zlength"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "ZfnDate", "leadingProperty": "ZfnDate", "sortProperty": "ZfnDate", "filterProperty": "ZfnDate", "columnIndex":9 }'/>
+                                    </customData>
+                                    <Text text="ZfnDate"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "ZfnDate1", "leadingProperty": "ZfnDate1", "sortProperty": "ZfnDate1", "filterProperty": "ZfnDate1", "columnIndex":10 }'/>
+                                    </customData>
+                                    <Text text="ZfnDate1"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "ZfnTime", "leadingProperty": "ZfnTime", "sortProperty": "ZfnTime", "filterProperty": "ZfnTime", "columnIndex":11 }'/>
+                                    </customData>
+                                    <Text text="ZfnTime"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "mat_des", "leadingProperty": "mat_des", "sortProperty": "mat_des", "filterProperty": "mat_des", "columnIndex":12 }'/>
+                                    </customData>
+                                    <Text text="Material Desc"></Text>
+                                </Column>
+                                <Column>
+                                    <customData>
+                                        <core:CustomData key="p13nData" value='\{"columnKey": "material", "leadingProperty": "material", "sortProperty": "material", "filterProperty": "material", "columnIndex":13 }'/>
+                                    </customData>
+                                    <Text text="Material"></Text>
+                                </Column>
+                            
+                            
+                            </columns>
+                        <items>
+                            <ColumnListItem >
+                                <ObjectStatus text="{Werks}"></ObjectStatus>
+                                <ObjectStatus text="{ZmcNo}"></ObjectStatus>
+                                <ObjectStatus text="{ZsetNo}"></ObjectStatus>
+                                <ObjectStatus text="{ZfsetNo}"></ObjectStatus>
+                                <ObjectStatus text="{ZsetStd}"></ObjectStatus>
+                                <ObjectStatus text="{UnitField}"></ObjectStatus>
+                                <ObjectStatus text="{UnitField1}"></ObjectStatus>
+                                <ObjectStatus text="{Zlength}"></ObjectStatus>
+                                <ObjectStatus text="{ZfnDate}"></ObjectStatus>
+                                <ObjectStatus text="{ZfnDate1}"></ObjectStatus>
+                                <ObjectStatus text="{ZfnTime}"></ObjectStatus>
+                                <ObjectStatus text="{mat_des}"></ObjectStatus>
+                                <ObjectStatus text="{material}"></ObjectStatus>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </smartTable:SmartTable>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

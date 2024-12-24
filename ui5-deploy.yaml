@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: ysetnumbercreation
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: MY405100
+          url: https://my405100-api.s4hana.cloud.sap
+        app:
+          name: ZPP_IVS
+          description: ZSETNUMBERCREATION
+          package: ZPP_IVS
+          transport: XMVK900560
+        exclude:
+          - /test/
